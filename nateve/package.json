@@ -4,23 +4,44 @@
 	"description": "Nateve Language Support",
 	"version": "0.0.1",
 	"engines": {
-		"vscode": "^1.62.0"
+		"vscode": "^1.60.1"
 	},
+
 	"categories": [
-		"Other"
+		"Programming Languages", "Linters"
 	],
+
 	"activationEvents": [
-        "onCommand:nateve.helloWorld"
+        "onCommand:nateve.run"
 	],
-	"main": "./out/extension.js",
+
+	"main": "extension.js",
+
 	"contributes": {
 		"commands": [
 			{
-				"command": "nateve.helloWorld",
-				"title": "Hello World"
+				"command": "nateve.run",
+				"title": "Nateve Run File",
+				"description": "Run a Native file"
 			}
-		]
+		],
+
+		"languages": [
+			{
+			  "id": "Nateve",
+			  "extensions": [".nate"]
+			}
+		  ],
+
+		  "grammars": [
+			{
+			  "language": "Nateve",
+			  "scopeName": "source.nate",
+			  "path": "./syntaxes/nate.tmGrammar.json"
+			}
+		  ]
 	},
+
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
